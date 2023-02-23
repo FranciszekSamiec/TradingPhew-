@@ -11,11 +11,11 @@ from scipy.signal import find_peaks
 import re
 
 
-numOfBars = 0 # global variable - all candles in data set - used frequently 
+numOfBars = 0 # global variable - all candles in data set 
 def makeDataFrame(path, dateBeginM, dateBeginY, dateEndM, dateEndY, filename): # later to control scope of data to be read
 
 
-    
+    # first 6 columns important for now, not deleting s1 - s6, may be useful in the future
     colnames=['time','o', 'h', 'l', 'c', 'volume', 's1', 's2', 's3', 's4', 's5', 's6']
 
     file_list = glob.glob(path + "/*.csv")
@@ -68,7 +68,7 @@ def makeDataFrame(path, dateBeginM, dateBeginY, dateEndM, dateEndY, filename): #
     return df
 
 
-
+# it is essential that multiple dataFrames have same length - same period of different trading pairs
 
 df = makeDataFrame("C:\\Users\\fsami\\Desktop\\trejdor\\months\\ETHUSDT", "07", 2020, "01", 2023)
 dfDown = makeDataFrame("C:\\Users\\fsami\\Desktop\\trejdor\\months\\ETHDOWNUSDT", "07", 2020, "01", 2023)
